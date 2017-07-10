@@ -1,0 +1,21 @@
+{
+  "name": "iainconnor/php-cli-server-router",
+  "description": "A simple router for the PHP CLI server and bindings for it to Lumen/Laravel.",
+  "type": "library",
+  "require": {
+    "illuminate/support": "^5.4",
+    "illuminate/console": "^5.4"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "IainConnor\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Iain Connor",
+      "email": "iainconnor@gmail.com"
+    }
+  ]
+}
