@@ -46,7 +46,14 @@ if (substr($requestPath, 0, 1) !== '.' && substr($requestPath, 0, 2) !== '/.' &&
     return false;
 }
 
+error_log('::1:' . getmypid() . ' [' . http_response_code() . '] ' . $requestPath);
+
+unset($requestUriParts);
+unset($requestPath);
+unset($realRequestPath);
+unset($queryParams);
+
 // Load default router.
 include $_SERVER['DOCUMENT_ROOT'] . "/index.php";
 
-error_log('::1:' . getmypid() . ' [' . http_response_code() . '] ' . $requestPath);
+
