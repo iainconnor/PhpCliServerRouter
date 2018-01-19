@@ -36,7 +36,7 @@ if (isset($requestUriParts['query'])) {
 }
 
 // Redirect trailing slash if not a directory.
-if (substr($requestPath, -1) === "/" && !is_dir($realRequestPath)) {
+if (substr($requestPath, -1) === '/' && !is_dir($realRequestPath)) {
     http_redirect(substr($requestPath, 0, -1), $queryParams);
 }
 
@@ -44,6 +44,11 @@ if (substr($requestPath, -1) === "/" && !is_dir($realRequestPath)) {
 if (substr($requestPath, 0, 1) !== '.' && substr($requestPath, 0, 2) !== '/.' && is_file($realRequestPath)) {
 
     return false;
+}
+
+// Enable compression if requested.
+if (extension_loaded('zlib')) {
+    ob_start('ob_gzhandler');
 }
 
 error_log('::1:' . getmypid() . ' [' . http_response_code() . '] ' . $requestPath);
